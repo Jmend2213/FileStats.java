@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class TestScores2 {
+
+    private String name;
+    private int numScores;
+    private double Earned;
+
+    public TestScores2(String name) {
+        this.name = name;
+    }
+
+    public void addTestScore2(double earned) {
+        Earned += earned;
+        numScores++;
+    }
+
+    public int getNumTestsTaken2() {
+        return numScores;
+    }
+
+    public double getAverage2() {
+        return Earned / numScores;
+    }
+
+    //------------------------------------------------------------
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+
+        System.out.println("Enter name");
+        String name = keyboard.nextLine();
+
+        TestScores2 t1 = new TestScores2(name);
+        double scores;
+
+        do {
+            System.out.println("Enter score " + (t1.getNumTestsTaken2() + 1) + " or a negative number to exit");
+            scores = keyboard.nextDouble();
+            if (scores >= 0) {
+                t1.addTestScore2(scores);
+            }
+
+        } while (scores >= 0);
+
+        System.out.println("-- " + name + " --");
+        System.out.println("Num tests taken: " + t1.getNumTestsTaken2());
+        System.out.printf("Average: %.1f\n", t1.getAverage2());
+
+
+    }
+}
